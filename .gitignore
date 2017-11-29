@@ -1,4 +1,5 @@
-.terraform
-terraform.tfstate
-terraform.tfstate.backup
-files/lambda-dns-service.dist.zip
+/.terraform
+/terraform.tfstate
+/terraform.tfstate.*
+/.terraform.tfstate.*
+/files/lambda-dns-service.dist.zip
