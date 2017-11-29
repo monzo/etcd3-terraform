@@ -82,7 +82,7 @@ resource "aws_lambda_function" "cloudwatch-dns-service" {
   environment {
     variables = {
       HOSTED_ZONE_ID = "${aws_route53_zone.default.id}"
-      DOMAIN         = "i.${var.dns["domain_name"]}"
+      DOMAIN         = "i.${var.environment}.${var.dns["domain_name"]}"
     }
   }
 }
