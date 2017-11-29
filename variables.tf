@@ -38,8 +38,7 @@ variable "dns" {
   }
 }
 
-variable "root_key_pair_public_key" {
-}
+variable "root_key_pair_public_key" {}
 
 variable "cluster_size" {
   default = 9
