@@ -5,7 +5,7 @@ Before=etcd-member.service
 
 [Service]
 Type=oneshot
-ExecStartPre=/usr/bin/curl -o /tmp/etcd3-bootstrap ${etcd3_bootstrap_binary_url}
+ExecStartPre=/usr/bin/curl -L -o /tmp/etcd3-bootstrap ${etcd3_bootstrap_binary_url}
 ExecStartPre=/usr/bin/chmod +x /tmp/etcd3-bootstrap
 RemainAfterExit=true
 ExecStart=/tmp/etcd3-bootstrap \
