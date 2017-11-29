@@ -8,5 +8,14 @@ resource "aws_route53_record" "default" {
   name    = "_etcd-server._tcp.${var.role}.${var.region}.i.${var.environment}.${var.dns["domain_name"]}"
   type    = "SRV"
   ttl     = "1"
-  records = ["${formatlist("0 0 2380 %s", aws_autoscaling_group.default.*.name)}"]
+  records = ["${formatlist("0 0 2380 %s", aws_route53_record.peers.*.name)}"]
+}
+
+resource "aws_route53_record" "peers" {
+  count   = "${var.cluster_size}"
+  zone_id = "${aws_route53_zone.default.id}"
+  name    = "peer-${count.index}.${var.role}.${var.region}.i.${var.environment}.${var.dns["domain_name"]}"
+  type    = "A"
+  ttl     = "1"
+  records = ["198.51.100.${count.index}"]
 }

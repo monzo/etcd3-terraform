@@ -9,5 +9,8 @@ This will also create a Route 53 zone for the domain you pick and bind it to the
 An Elastic Load Balancer will be created for clients of the etcd cluster. It fronts all 9 ASGs on port `2379`.
 
 ## How to use
-The file variables.tf declares the Terraform variables required to run this stack. It contains some random defaults for AWS Regions, AZs and root ssh keys which you will need to change to reflect your infrastructure. You can either change the defaults directly or overwrite them by providing a terraform.tfvars file.
+The file variables.tf declares the Terraform variables required to run this stack. It contains some random defaults for AWS Regions, AZs and root ssh public key which you will need to change to reflect your infrastructure. You can either change the defaults directly or overwrite them by providing a terraform.tfvars file.
+
+## Caveats
+1. If you're applying this on a new AWS account, you'll need to request an EC2 instance limit increase from the default 5.
 
