@@ -1,0 +1,21 @@
+{
+    "dependencies": {
+        "aws-sdk": "^2.130.0",
+        "babel-polyfill": "^6.26.0",
+        "babel-runtime": "^6.26.0",
+        "escape-string-regexp": "^1.0.5",
+        "lodash": "^4.17.4",
+        "pretty-format": "^21.2.1"
+    },
+    "description": "AWS Lambda function to maintain Route53 DNS records from CloudWatch events",
+    "license": "UNLICENSED",
+    "devDependencies": {
+        "babel-cli": "^6.26.0",
+        "babel-core": "^6.26.0",
+        "babel-loader": "^7.1.2",
+        "babel-plugin-transform-runtime": "^6.23.0",
+        "babel-preset-es2017": "^6.24.1",
+        "babel-preset-stage-0": "^6.24.1",
+        "webpack": "^3.6.0"
+    }
+}

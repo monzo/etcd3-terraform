@@ -1,0 +1,19 @@
+[Unit]
+Requires=coreos-metadata.service network-online.target
+After=coreos-metadata.service network-online.target etcd-bootstrap.service
+Conflicts=etcd.service
+Conflicts=etcd2.service
+
+[Service]
+EnvironmentFile=/run/metadata/coreos
+Environment="ETCD_INITIAL_ADVERTISE_PEER_URLS=http://${peer_name}.${discovery_domain_name}:2380"
+Environment="ETCD_INITIAL_CLUSTER_TOKEN=${cluster_name}"
+Environment="ETCD_ADVERTISE_CLIENT_URLS=http://${peer_name}.${discovery_domain_name}:2379"
+Environment="ETCD_LISTEN_CLIENT_URLS=http://0.0.0.0:2379"
+Environment="ETCD_LISTEN_PEER_URLS=http://0.0.0.0:2380"
+Environment="ETCD_STRICT_RECONFIG_CHECK=true"
+Environment="ETCD_NAME=${peer_name}"
+Environment="ETCD_INITIAL_CLUSTER_STATE=new"
+Environment="ETCD_DISCOVERY_SRV=${discovery_domain_name}"
+ExecStart=
+ExecStart=/usr/lib/coreos/etcd-wrapper $ETCD_OPTS

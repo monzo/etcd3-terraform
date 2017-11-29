@@ -1,0 +1,18 @@
+[Unit]
+Wants=network-online.target
+After=network-online.target
+Before=etcd-member.service
+
+[Service]
+Type=oneshot
+ExecStartPre=/usr/bin/curl -o /tmp/etcd3-bootstrap ${etcd3_bootstrap_binary_url}
+ExecStartPre=/usr/bin/chmod +x /tmp/etcd3-bootstrap
+RemainAfterExit=true
+ExecStart=/tmp/etcd3-bootstrap \
+    -ebs-volume-name=${peer_name}-ssd.${discovery_domain_name} \
+    -block-device=/dev/xvdf \
+    -aws-region=${region} \
+    -mount-point=/var/lib/etcd
+
+[Install]
+WantedBy=etcd-member.service

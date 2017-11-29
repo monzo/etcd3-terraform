@@ -1,0 +1,43 @@
+{
+    "ignition": {
+        "version": "2.0.0"
+    },
+    "systemd": {
+        "units": [
+            {
+                "name": "locksmithd.service",
+                "enable": false,
+                "mask": true
+            },
+            {
+                "name": "etcd-bootstrap.service",
+                "enable": true,
+                "contents": ${jsonencode(etcd_bootstrap_unit)
+                }
+            },
+            {
+                "name": "etcd-member.service",
+                "enable": true,
+                "dropins": [
+                    {
+                        "name": "20-clct-etcd-member.conf",
+                        "contents": ${jsonencode(etcd_member_unit)
+                        }
+                    }
+                ]
+            },
+            {
+                "name": "ntpdate.service",
+                "enable": true,
+                "contents": ${jsonencode(ntpdate_unit)
+                }
+            },
+            {
+                "name": "ntpdate.timer",
+                "enable": true,
+                "contents": ${jsonencode(ntpdate_timer_unit)
+                }
+            }
+        ]
+    }
+}
