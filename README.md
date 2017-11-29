@@ -1,6 +1,6 @@
 # `etcd3-terraform`
 
-A Terraform recipe for a robust etcd cluster on AWS. This is based on the setup we use internally at Monzo (which you can read more about in our blog post), but is self-contained.
+A Terraform recipe for a robust etcd cluster on AWS. This is based on the setup we use internally at Monzo (which you can read more about in our [blog post]), but is self-contained and does not rely on Monzo's other core infrastructure.
 
 **⚠️ Warning**  
 This is an illustration of how we run etcd clusters. This should not be deployed to production without first securing the infrastructure. For example, for ease, all instances have public IP addresses with SSH open to the internet in these manifests, and you probably don't want that for production workloads.
@@ -22,3 +22,5 @@ The file `variables.tf` declares the Terraform variables required to run this st
 New AWS accounts have default limits in place which may prevent you from launching this stack. Those we ran into are:
 
 * **EC2 Instances**: There is a default limit of 5 instances. This will need to be raised to at least 9.
+
+[blog post]: https://monzo.com/blog/2017/11/29/very-robust-etcd/ "Very Robust etcd"
