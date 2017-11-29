@@ -7,3 +7,7 @@ This will create a new VPC and a set of 9 Auto Scaling Groups each running a sin
 This will also create a Route 53 zone for the domain you pick and bind it to the VPC so its records can be resolved. This domain does not need to be registered. An `SRV` record suitable for etcd discovery is also created as well as a Lambda function which monitors ASG events and creates `A` records for each member of the cluster.
 
 An Elastic Load Balancer will be created for clients of the etcd cluster. It fronts all 9 ASGs on port `2379`.
+
+## How to use
+The file variables.tf declares the Terraform variables required to run this stack. It contains some random defaults for AWS Regions, AZs and root ssh keys which you will need to change to reflect your infrastructure. You can either change the defaults directly or overwrite them by providing a terraform.tfvars file.
+
