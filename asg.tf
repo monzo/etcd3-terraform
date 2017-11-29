@@ -28,6 +28,7 @@ resource "aws_autoscaling_group" "default" {
   launch_configuration      = "${element(aws_launch_configuration.default.*.name, count.index)}"
   vpc_zone_identifier       = ["${element(aws_subnet.default.*.id, count.index)}"]
   load_balancers            = ["${aws_elb.internal.name}"]
+  wait_for_capacity_timeout = "0"
 
   tag {
     key                 = "Name"
