@@ -3,14 +3,14 @@ data "template_file" "cloud-init" {
   template = "${file("${path.module}/cloudinit/userdata-template.json")}"
 
   vars {
-    environment           = "${var.environment}"
-    role                  = "${var.role}"
-    region                = "${var.region}"
+    environment = "${var.environment}"
+    role        = "${var.role}"
+    region      = "${var.region}"
 
-    etcd_member_unit       = "${element(data.template_file.etcd_member_unit.*.rendered, count.index)}"
-    etcd_bootstrap_unit    = "${element(data.template_file.etcd_bootstrap_unit.*.rendered, count.index)}"
-    ntpdate_unit           = "${data.template_file.ntpdate_unit.rendered}"
-    ntpdate_timer_unit     = "${data.template_file.ntpdate_timer_unit.rendered}"
+    etcd_member_unit    = "${element(data.template_file.etcd_member_unit.*.rendered, count.index)}"
+    etcd_bootstrap_unit = "${element(data.template_file.etcd_bootstrap_unit.*.rendered, count.index)}"
+    ntpdate_unit        = "${data.template_file.ntpdate_unit.rendered}"
+    ntpdate_timer_unit  = "${data.template_file.ntpdate_timer_unit.rendered}"
   }
 }
 
