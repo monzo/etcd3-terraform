@@ -1,6 +1,6 @@
 {
     "dependencies": {
-        "aws-sdk": "^2.336.0",
+        "aws-sdk": "^2.814.0",
         "babel-polyfill": "^6.26.0",
         "babel-runtime": "^6.26.0",
         "escape-string-regexp": "^1.0.5",
